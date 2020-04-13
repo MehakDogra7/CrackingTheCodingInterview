@@ -2,7 +2,6 @@ public class IsPermPalindrome {
 
     public static void main(String[] args) {
         String s1 = "taco act";
-
         System.out.println("Is permutation palindrome of " + s1 + ": " + isPermPalindrome(s1));
     }
 
