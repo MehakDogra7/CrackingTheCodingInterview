@@ -17,7 +17,7 @@ public class StringCompression {
                 count++;
                 j++;
             }
-            res.append(str.charAt(i) + String.valueOf(count));
+            res.append(str.charAt(i)).append(count);
             i = j;
         }
 
