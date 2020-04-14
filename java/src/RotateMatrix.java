@@ -20,7 +20,7 @@ public class RotateMatrix {
             System.out.println();
         }
 
-        int[][] rotatedMatrix = rotateOutplace1(matrix);
+        int[][] rotatedMatrix = rotateOutplace(matrix);
         System.out.println("Output matrix outPlace:");
         for (int[] ints : rotatedMatrix) {
             for (int anInt : ints) {
@@ -41,21 +41,31 @@ public class RotateMatrix {
 
     private static int[][] rotateInplace(int[][] matrix) {
 
+        for (int layer = 0; layer < matrix.length / 2; layer++) {
+            int first = layer;
+            int last = matrix.length - layer - 1;
 
-        return matrix;
-    }
+            for (int i = first; i < last; i++) {
+                int offset = i - first;
+                int top = matrix[first][i];
 
-    private static int[][] rotateOutplace2(int[][] matrix) {
+                //left -> top
+                matrix[first][i] = matrix[last - offset][first];
 
-        int[] temp = new int[matrix.length];
-        for(int i=0;i<matrix.length;i++){
+                //bottom -> left
+                matrix[last - offset][first] = matrix[last][last - offset];
 
+                //right -> bottom
+                matrix[last][last - offset] = matrix[i][last];
+
+                //top -> right
+                matrix[i][last] = top;
+            }
         }
-
         return matrix;
     }
 
-    private static int[][] rotateOutplace1(int[][] matrix) {
+    private static int[][] rotateOutplace(int[][] matrix) {
 
         int[][] rotatedMatrix = new int[matrix.length][matrix[0].length];
 
