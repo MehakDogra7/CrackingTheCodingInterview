@@ -1,4 +1,12 @@
 public class RotateMatrix {
+    /**
+     * Input matrix:                  Output matrix
+     * 1 2 3          Rotate          7 4 1
+     * 4 5 6          ----->          8 5 2
+     * 7 8 9          90 deg          9 6 3
+     *
+     * @param args
+     */
 
     public static void main(String[] args) {
 
@@ -12,7 +20,7 @@ public class RotateMatrix {
             System.out.println();
         }
 
-        int[][] rotatedMatrix = rotateOutplace(matrix);
+        int[][] rotatedMatrix = rotateOutplace1(matrix);
         System.out.println("Output matrix outPlace:");
         for (int[] ints : rotatedMatrix) {
             for (int anInt : ints) {
@@ -34,10 +42,20 @@ public class RotateMatrix {
     private static int[][] rotateInplace(int[][] matrix) {
 
 
-        return new int[0][];
+        return matrix;
     }
 
-    private static int[][] rotateOutplace(int[][] matrix) {
+    private static int[][] rotateOutplace2(int[][] matrix) {
+
+        int[] temp = new int[matrix.length];
+        for(int i=0;i<matrix.length;i++){
+            
+        }
+
+        return matrix;
+    }
+
+    private static int[][] rotateOutplace1(int[][] matrix) {
 
         int[][] rotatedMatrix = new int[matrix.length][matrix[0].length];
 
