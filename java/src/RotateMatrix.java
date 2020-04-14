@@ -1,6 +1,6 @@
 public class RotateMatrix {
     /**
-     * Input matrix:                  Output matrix
+     * Input matrix:                  Output matrix:
      * 1 2 3          Rotate          7 4 1
      * 4 5 6          ----->          8 5 2
      * 7 8 9          90 deg          9 6 3
@@ -49,7 +49,7 @@ public class RotateMatrix {
 
         int[] temp = new int[matrix.length];
         for(int i=0;i<matrix.length;i++){
-            
+
         }
 
         return matrix;
