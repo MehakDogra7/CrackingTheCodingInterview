@@ -1,3 +1,5 @@
+package stringsandarrays;
+
 public class IsPermPalindrome {
 
     public static void main(String[] args) {

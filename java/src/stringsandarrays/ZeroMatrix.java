@@ -1,3 +1,5 @@
+package stringsandarrays;
+
 public class ZeroMatrix {
 
     /**
