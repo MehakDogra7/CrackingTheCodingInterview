@@ -1,4 +1,4 @@
-package MustDo.Arrays;
+package MustDo.Array;
 
 import java.util.Scanner;
 
