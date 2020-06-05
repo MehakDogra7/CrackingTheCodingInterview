@@ -1,4 +1,4 @@
-package MustDo.Array;
+package MustDo.Arrays;
 
 public class CountTheTriplets {
 }
