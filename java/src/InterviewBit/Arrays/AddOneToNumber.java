@@ -7,8 +7,8 @@ public class AddOneToNumber {
 
     public static void main(String[] args) {
 
-        ArrayList<Integer> A = new ArrayList<Integer>(List.of(0));
-        ArrayList<Integer> B = plusOne1(A);
+        ArrayList<Integer> A = new ArrayList<Integer>(List.of(0, 0, 9, 9));
+        ArrayList<Integer> B = plusOneUsingLoop(A);
 
         for (Integer i : B) {
             System.out.println(i + " ");
@@ -16,7 +16,7 @@ public class AddOneToNumber {
         }
     }
 
-    private static ArrayList<Integer> plusOne1(ArrayList<Integer> A) {
+    private static ArrayList<Integer> plusOneUsingLoop(ArrayList<Integer> A) {
 
         while (!A.isEmpty()) {
             if (A.get(0) != 0) {
@@ -24,7 +24,7 @@ public class AddOneToNumber {
             }
             A.remove(0);
         }
-            
+
         for (int i = A.size() - 1; i >= 0; i--) {
             if (A.get(i) != 9) {
                 A.set(i, A.get(i) + 1);
@@ -39,7 +39,7 @@ public class AddOneToNumber {
     }
 
 
-    private static ArrayList<Integer> plusOne(ArrayList<Integer> A) {
+    private static ArrayList<Integer> plusOneUsingRecursion(ArrayList<Integer> A) {
 
         while (!A.isEmpty()) {
             if (A.get(0) != 0) {
@@ -53,27 +53,24 @@ public class AddOneToNumber {
             return A;
         }
 
-        return addOneToNumber(A);
-    }
 
-    public static ArrayList<Integer> addOneToNumber(ArrayList<Integer> B) {
-
-        if (B.get(B.size() - 1) != 9) {
-            B.set(B.size() - 1, B.get(B.size() - 1) + 1);
-            return B;
+        if (A.get(A.size() - 1) != 9) {
+            A.set(A.size() - 1, A.get(A.size() - 1) + 1);
+            return A;
         }
 
-        if (B.size() == 1) {
-            B.removeAll(B);
-            B.add(1);
-            B.add(0);
-            return B;
+        if (A.size() == 1) {
+            A.removeAll(A);
+            A.add(1);
+            A.add(0);
+            return A;
         }
 
-        B.remove(B.size() - 1);
-        B = (plusOne(B));
-        B.add(0);
+        A.remove(A.size() - 1);
+        A = (plusOneUsingRecursion(A));
+        A.add(0);
 
-        return B;
+        return A;
+
     }
 }
