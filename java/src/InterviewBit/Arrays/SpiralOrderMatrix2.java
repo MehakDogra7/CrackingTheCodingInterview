@@ -16,7 +16,7 @@ public class SpiralOrderMatrix2 {
     private static int[][] spiralOrder(int A) {
         final int[][] result = new int[A][A];
 
-        int ASquare = A * A, temp = 1;
+        int temp = 1;
         int t = 0, b = A - 1, l = 0, r = A - 1;
         int dir = 0;
 
