@@ -36,7 +36,7 @@ public class NobleInteger {
         int n = A.size();
 
         for (int i = 0; i < n; i++) {
-            if (i != n - 1 && A.get(i) == A.get(i + 1)) {
+            if (i != n - 1 && A.get(i).equals(A.get(i + 1))) {
                 continue;
             }
             if (A.get(i) == (n - 1) - i) {
