@@ -63,15 +63,4 @@ public class NextPermutation {
         }
     }
 
-    private void printPermutation(List<Integer> A, String prefix) {
-        if (A.size() == 0) {
-            System.out.println(prefix);
-        } else {
-            for (int i = 0; i < A.size(); i++) {
-                List<Integer> rem = A.subList(0, i);
-                rem.addAll(A.subList(i + 1, A.size()));
-                printPermutation(rem, prefix + A.get(i));
-            }
-        }
-    }
 }
