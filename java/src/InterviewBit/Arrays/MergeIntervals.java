@@ -4,36 +4,29 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Stack;
 
-class Interval {
-    int start;
-    int end;
-
-    Interval() {
-        start = 0;
-        end = 0;
-    }
-
-    Interval(int s, int e) {
-        start = s;
-        end = e;
-    }
-}
-
-public class MergeOverlappingIntervals {
+public class MergeIntervals {
 
     public static void main(String[] args) {
 
         ArrayList<Interval> intervals = new ArrayList<>();
-        intervals.add(new Interval(1, 3));
-        intervals.add(new Interval(2, 6));
+        intervals.add(new Interval(1, 2));
+        intervals.add(new Interval(3, 5));
+        intervals.add(new Interval(6, 7));
         intervals.add(new Interval(8, 10));
-        intervals.add(new Interval(15, 18));
+        intervals.add(new Interval(12, 16));
 
-        new MergeOverlappingIntervals().merge(intervals).forEach(i -> System.out.println(i.start + " " + i.end));
+        Interval newInterval = new Interval(4, 9);
+
+        new MergeIntervals().insert(intervals, newInterval).forEach(MergeIntervals::print);
     }
 
-    public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
+    private static void print(Interval i) {
+        System.out.println(i.start + " " + i.end);
+    }
 
+    public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
+
+        intervals.add(newInterval);
         intervals.sort(Comparator.comparingInt(i -> i.start));
 
         Stack<Interval> stack = new Stack<>();
@@ -81,5 +74,4 @@ public class MergeOverlappingIntervals {
             return true;
         return false;
     }
-
 }
