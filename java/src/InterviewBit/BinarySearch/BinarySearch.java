@@ -16,12 +16,11 @@ public class BinarySearch {
 
     private static int getIndexRecursion(List<Integer> A, int low, int high, int n) {
 
-        int mid = low + (high - low) / 2;
-        if (A.get(mid) == n) {
-            return mid;
-        }
-
-        if (low < high) {
+        if (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (A.get(mid) == n) {
+                return mid;
+            }
             return (n < A.get(mid) ? getIndexRecursion(A, low, mid - 1, n) : getIndexRecursion(A, mid + 1, high, n));
         }
         return -1;
