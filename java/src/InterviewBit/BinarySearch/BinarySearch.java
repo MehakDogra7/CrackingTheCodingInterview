@@ -12,7 +12,6 @@ public class BinarySearch {
         System.out.println(Arrays.binarySearch(new int[]{1, 8, 21, 32, 45, 88}, 325));
         System.out.println(binarySearchRecursion(A, 0, A.size() - 1, 325));
         System.out.println(binarySearchLoop(A, 0, A.size() - 1, 325));
-
         System.out.println();
         System.out.println(Arrays.binarySearch(new int[]{1, 8, 21, 32, 45, 88}, 88));
         System.out.println(binarySearchRecursion(A, 0, A.size() - 1, 88));
