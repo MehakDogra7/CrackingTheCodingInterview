@@ -9,24 +9,24 @@ public class BinarySearch {
 
         List<Integer> A = Arrays.asList(1, 8, 21, 32, 45, 88);
 
-        System.out.println(getIndexRecursion(A, 0, A.size() - 1, 32));
-        System.out.println(getIndexLoop(A, 0, A.size() - 1, 32));
+        System.out.println(binarySearchRecursion(A, 0, A.size() - 1, 32));
+        System.out.println(binarySearchLoop(A, 0, A.size() - 1, 32));
 
     }
 
-    private static int getIndexRecursion(List<Integer> A, int low, int high, int n) {
+    private static int binarySearchRecursion(List<Integer> A, int low, int high, int n) {
 
         if (low <= high) {
             int mid = low + (high - low) / 2;
             if (A.get(mid) == n) {
                 return mid;
             }
-            return (n < A.get(mid) ? getIndexRecursion(A, low, mid - 1, n) : getIndexRecursion(A, mid + 1, high, n));
+            return (n < A.get(mid) ? binarySearchRecursion(A, low, mid - 1, n) : binarySearchRecursion(A, mid + 1, high, n));
         }
-        return -1;
+        return -(low + 1);
     }
 
-    private static int getIndexLoop(List<Integer> A, int low, int high, int n) {
+    private static int binarySearchLoop(List<Integer> A, int low, int high, int n) {
 
         while (low <= high) {
             int mid = low + (high - low) / 2;
@@ -39,6 +39,6 @@ public class BinarySearch {
             }
         }
 
-        return -1;
+        return -(low + 1);
     }
 }
