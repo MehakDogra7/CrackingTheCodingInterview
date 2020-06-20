@@ -1,4 +1,4 @@
-package InterviewBit.BinarySearch;
+package InterviewBit.Math;
 
 public class PowerOfTwoIntegers {
 
