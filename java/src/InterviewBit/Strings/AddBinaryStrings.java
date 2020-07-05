@@ -42,14 +42,11 @@ public class AddBinaryStrings {
             if (x == '0' && y == '0') {
                 add = carry ? '1' : '0';
                 carry = false;
-            }
-            if (x == '0' && y == '1') {
+            } else if (x == '0' && y == '1') {
                 add = carry ? '0' : '1';
-            }
-            if (x == '1' && y == '0') {
+            } else if (x == '1' && y == '0') {
                 add = carry ? '0' : '1';
-            }
-            if (x == '1' && y == '1') {
+            } else if (x == '1' && y == '1') {
                 add = carry ? '1' : '0';
                 carry = true;
             }
