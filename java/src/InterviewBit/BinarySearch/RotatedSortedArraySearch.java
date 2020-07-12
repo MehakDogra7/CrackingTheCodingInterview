@@ -63,4 +63,24 @@ public class RotatedSortedArraySearch {
         }
         return -1;
     }
+
+    /*public int search1(final int[] A, int B) {
+        int low = 0;
+        int high = A.length - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (A[mid] == B) {
+                return mid;
+            } else if (A[mid] < A[high]) {
+                if (A[mid] > B) {
+                    return
+                }
+            } else if (A[mid] > B) {
+
+            }
+        }
+
+        return -1;
+    }*/
 }
