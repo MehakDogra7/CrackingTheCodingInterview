@@ -6,8 +6,8 @@ public class AllocateBooks {
 
         int[] A = {10, 20, 30, 40};
         int B = 2;
-        //System.out.println(new AllocateBooks().books(A, B));
-        System.out.println(new AllocateBooks().isPossible(A, 50, 2));
+        System.out.println(new AllocateBooks().books(A, B));
+        //System.out.println(new AllocateBooks().isPossible(A, 50, 2));
 
     }
 
