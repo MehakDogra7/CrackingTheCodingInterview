@@ -7,17 +7,7 @@ public class DivideIntegers {
     }
 
     private int divide(int A, int B) {
-        int sign = 1;
-
-        if (A < 0) {
-            if (B < 0) {
-                sign = 1;
-            } else {
-                sign = -1;
-            }
-        } else if (B < 0) {
-            sign = -1;
-        }
+        int sign = (A < 0) ^ (B < 0) ? -1 : 1;
 
         long x = Math.abs((long) A);
         long y = Math.abs((long) B);
