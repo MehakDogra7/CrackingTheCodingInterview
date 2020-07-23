@@ -25,6 +25,14 @@ public class PartitionList {
         }
     }
 
+    /**
+     * Approach: If current value is greater or equal to then move that node to the last position, so that all the lesser element comes before the
+     * first largest or equal value and all greater value move to the end and that too in-order.
+     *
+     * @param A
+     * @param B
+     * @return
+     */
     public ListNode partition(ListNode A, int B) {
         if (A == null || A.next == null)
             return A;
