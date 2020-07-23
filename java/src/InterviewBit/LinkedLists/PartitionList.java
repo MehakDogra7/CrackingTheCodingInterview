@@ -31,7 +31,7 @@ public class PartitionList {
      *
      * @param A
      * @param B
-     * @return
+     * @return ListNode
      */
     public ListNode partition(ListNode A, int B) {
         if (A == null || A.next == null)
