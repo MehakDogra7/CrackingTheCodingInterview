@@ -18,7 +18,7 @@ public class MergeTwoSortedLists {
         x.next = y;
         y.next = z;
 
-        ListNode merge = new MergeTwoSortedLists().mergeInplace(a, x);
+        ListNode merge = new MergeTwoSortedLists().merge(a, x);
         while (merge != null) {
             System.out.println(merge.val);
             merge = merge.next;
@@ -49,6 +49,31 @@ public class MergeTwoSortedLists {
             prev.next = B;
         } else {
             prev.next = A;
+        }
+
+        return start.next;
+    }
+
+    public ListNode merge(ListNode A, ListNode B) {
+        if (A == null)
+            return B;
+        if (B == null)
+            return A;
+
+        ListNode start = new ListNode(Integer.MIN_VALUE);
+        ListNode prev = start;
+
+        while (A != null || B != null) {
+            int xVal = A != null ? A.val : Integer.MAX_VALUE;
+            int yVal = B != null ? B.val : Integer.MAX_VALUE;
+            if (xVal <= yVal) {
+                prev.next = A;
+                A = A.next;
+            } else {
+                prev.next = B;
+                B = B.next;
+            }
+            prev = prev.next;
         }
 
         return start.next;

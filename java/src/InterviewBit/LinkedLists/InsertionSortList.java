@@ -5,11 +5,11 @@ public class InsertionSortList {
     public static void main(String[] args) {
 
         ListNode a = new ListNode(1);
-        ListNode b = new ListNode(2);
-        ListNode c = new ListNode(3);
-        ListNode d = new ListNode(4);
-        ListNode e = new ListNode(5);
-        ListNode f = new ListNode(6);
+        ListNode b = new ListNode(3);
+        ListNode c = new ListNode(2);
+        ListNode d = new ListNode(6);
+        ListNode e = new ListNode(4);
+        ListNode f = new ListNode(5);
 
         a.next = b;
         b.next = c;
