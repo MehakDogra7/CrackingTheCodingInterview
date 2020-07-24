@@ -23,6 +23,13 @@ public class ReverseLinkedList2 {
         }
     }
 
+    /**
+     * Solve it in 1 pass and with Constant space complexity
+     * @param A
+     * @param B
+     * @param C
+     * @return
+     */
     private ListNode solve(ListNode A, int B, int C) {
         if (A == null || A.next == null)
             return A;
