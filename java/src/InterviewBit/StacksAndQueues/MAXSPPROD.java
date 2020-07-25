@@ -7,7 +7,7 @@ import java.util.Stack;
 public class MAXSPPROD {
 
     public static void main(String[] args) {
-        ArrayList<Integer> A = new ArrayList(List.of(5, 9, 6, 8, 6, 4, 6, 9, 5, 4, 9));
+        ArrayList<Integer> A = new ArrayList<>(List.of(5, 9, 6, 8, 6, 4, 6, 9, 5, 4, 9));
         System.out.println(new MAXSPPROD().maxSpecialProduct(A));
     }
 
@@ -34,6 +34,7 @@ public class MAXSPPROD {
         return (int) (prod % 1000000007);
     }
 
+    //Store elements in strictly decreasing order in stack
     private int getMax(ArrayList<Integer> A, Stack<Integer> stack, Integer currIndex) {
 
         while (!stack.isEmpty()) {
