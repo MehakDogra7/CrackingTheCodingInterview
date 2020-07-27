@@ -1,34 +1,45 @@
 package InterviewBit.Backtracking;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
+/**
+ * Any number can be considered infinite number of times
+ */
 public class CombinationSum {
 
-    public static Set<ArrayList<Integer>> result = new HashSet<>();
+    public static ArrayList<ArrayList<Integer>> result = new ArrayList<>();
 
     public static void main(String[] args) {
-        ArrayList<Integer> A = new ArrayList<>(List.of(8, 8, 8));
+        ArrayList<Integer> A = new ArrayList<>(List.of(8, 10, 6, 11, 1, 16, 8));
 
-        new CombinationSum().combinationSum(A, 16);
+        new CombinationSum().combinationSum(A, 28);
         result.forEach(i -> {
             i.forEach(j -> System.out.print(j + " "));
             System.out.println();
         });
     }
 
-    public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> a, int b) {
+    public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> A, int B) {
         result.clear();
-        a.sort(Integer::compareTo);
+        A.sort(Integer::compareTo);
+        int i = 0;
+        while (i < A.size() - 1) {
+            if (A.get(i).equals(A.get(i + 1))) {
+                A.remove(i);
+            } else {
+                i++;
+            }
+        }
 
-        recursive(a, new ArrayList<>(), b, 0);
-        ArrayList<ArrayList<Integer>> ans = new ArrayList<>(result);
-        Collections.reverse(ans);
+        recursiveAllowDupes(A, new ArrayList<>(), B, 0);
+        Collections.reverse(result);
 
-        return ans;
+        return result;
     }
 
-
-    private void recursive(ArrayList<Integer> A, ArrayList<Integer> temp, int target, int i) {
+    public void recursiveAllowDupes(ArrayList<Integer> A, ArrayList<Integer> temp, int target, int i) {
         if (target == 0) {
             result.add(temp);
             return;
@@ -39,12 +50,14 @@ public class CombinationSum {
         }
 
         if (A.get(i) > target) {
-            recursive(A, temp, target, i + 1);
+            recursiveAllowDupes(A, temp, target, i + 1);
         } else {
-            recursive(A, temp, target, i + 1);
+            //2 Possibilities -- 1.) Go with the currNumber, 2.) Proceed with the next number
+            recursiveAllowDupes(A, temp, target, i + 1); //2.)
             ArrayList<Integer> temp2 = new ArrayList<>(temp);
             temp2.add(A.get(i));
-            recursive(A, temp2, target - A.get(i), i + 1);
+            recursiveAllowDupes(A, temp2, target - A.get(i), i); //1.)
         }
     }
+
 }
