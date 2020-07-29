@@ -1,24 +1,13 @@
 package MustDo.Arrays;
 
-import java.util.Scanner;
-
 public class SubArrayWithGivenSum {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        int t = scanner.nextInt();
-
-        for (int i = 0; i < t; i++) {
-            int n = scanner.nextInt();
-            int target = scanner.nextInt();
-            int[] array = new int[n];
-            for (int j = 0; j < n; j++) {
-                array[j] = scanner.nextInt();
-            }
-
-            bruteForce(array, target);
-        }
+        int[] array = {1, 2, 3};
+        int target = 3;
+        //bruteForce(array, target);
+        optimal(array, target);
     }
 
     private static void bruteForce(int[] array, int target) {
@@ -39,5 +28,25 @@ public class SubArrayWithGivenSum {
         if (!flag) {
             System.out.println("-1");
         }
+    }
+
+    private static void optimal(int[] array, int target) {
+        int l = 0;
+        int sum = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+
+            while (sum > target && l < i) {
+                sum -= array[l++];
+            }
+
+            if (sum == target) {
+                System.out.println(l + " " + i);
+                return;
+            }
+        }
+
+        System.out.println("-1");
     }
 }
