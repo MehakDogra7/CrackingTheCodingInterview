@@ -8,12 +8,38 @@ import java.util.List;
 public class Sum4 {
 
     public static void main(String[] args) {
-        ArrayList<Integer> A = new ArrayList<>(List.of(1, 0, -1, 0, -2, 2));
-        ArrayList<ArrayList<Integer>> result = new Sum4().fourSum(A, 0);
+        ArrayList<Integer> A = new ArrayList<>(List.of(9, -8, -10, -7, 7, -8, 2, -7, 4, 7, 0, -3, -4, -5, -1, -4, 5, 8, 1, 9, -2, 5, 10, -5, -7, -1, -6, 4, 1, -5, 3, 8, -4, -10, -9, -3, 10, 0, 7, 9, -8, 10, -9, 7, 8, 0, 6, -6, -7, 6, -4, 2, 0, 10, 1, -2, 5, -2));
+        ArrayList<ArrayList<Integer>> result = new Sum4().fourSumBruteForce(A, 0);
         result.forEach(i -> {
             i.forEach(j -> System.out.print(j + " "));
             System.out.println();
         });
+    }
+
+    public ArrayList<ArrayList<Integer>> fourSumBruteForce(ArrayList<Integer> A, int B) {
+        A.sort(Integer::compareTo);
+        HashSet<ArrayList<Integer>> tempResult = new HashSet<>();
+
+        for (int i = 0; i < A.size(); i++) {
+            for (int j = i + 1; j < A.size(); j++) {
+                for (int k = j + 1; k < A.size(); k++) {
+                    for (int l = k + 1; l < A.size(); l++) {
+                        int sum = A.get(i) + A.get(j) + A.get(k) + A.get(l);
+                        if (sum == B) {
+                            ArrayList<Integer> temp = new ArrayList<>();
+                            temp.add(A.get(i));
+                            temp.add(A.get(j));
+                            temp.add(A.get(k));
+                            temp.add(A.get(l));
+                            tempResult.add(temp);
+                        }
+                    }
+                }
+            }
+        }
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>(tempResult);
+        sort(result);
+        return result;
     }
 
     public ArrayList<ArrayList<Integer>> fourSum(ArrayList<Integer> A, int B) {
