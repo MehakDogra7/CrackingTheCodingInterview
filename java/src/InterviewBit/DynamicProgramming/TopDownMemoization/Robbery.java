@@ -7,18 +7,11 @@ import java.util.List;
 public class Robbery {
 
     public static void main(String[] args) {
-        ArrayList<Integer> A = new ArrayList<>(List.of(200, 7, 9, 300, 1));
+        ArrayList<Integer> A = new ArrayList<>(List.of(200, 7000, 900, 300, 1000));
         System.out.println(new Robbery().solve(A));
     }
 
     private int solve(ArrayList<Integer> A) {
-        if (A.size() == 1) {
-            return A.get(0);
-        }
-        if (A.size() == 2) {
-            return Integer.max(A.get(0), A.get(1));
-        }
-
         int[] dp = new int[A.size()];
         Arrays.fill(dp, -1);
 
@@ -27,8 +20,11 @@ public class Robbery {
 
     private int maxRobbery(ArrayList<Integer> A, int[] dp, int i) {
 
-        if (i == A.size() - 1 || i == A.size() - 2) {
+        if (i == A.size() - 1) {
             dp[i] = A.get(i);
+            return dp[i];
+        } else if (i == A.size() - 2) {
+            dp[i] = Integer.max(A.get(i), A.get(i + 1));
             return dp[i];
         }
 

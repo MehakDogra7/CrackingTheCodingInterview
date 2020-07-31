@@ -1,4 +1,4 @@
-package InterviewBit.DynamicProgramming.BottomUp;
+package InterviewBit.DynamicProgramming.BottomUpTabular;
 
 import java.util.Arrays;
 
