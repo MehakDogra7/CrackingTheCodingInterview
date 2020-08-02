@@ -1,9 +1,6 @@
 package InterviewBit.HeapsAndMaps;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class NMaxPairCombinations {
 
@@ -14,15 +11,8 @@ public class NMaxPairCombinations {
         new NMaxPairCombinations().solveBruteForce(A, B).forEach(i -> System.out.print(i + " "));
         System.out.println();
         new NMaxPairCombinations().solve(A, B).forEach(i -> System.out.print(i + " "));
-        /*HeapObject a = new HeapObject(1, 0, 0);
-        HeapObject b = new HeapObject(9, 0, 0);
-        HeapObject c = new HeapObject(8, 0, 0);
-        HeapObject d = new HeapObject(2, 0, 0);
-        HeapObject e = new HeapObject(3, 0, 0);
-        ArrayList<HeapObject> heapObjects = new ArrayList<>(List.of(a, b, c, d, e));
-        new NMaxPairCombinations().maxHeapify(heapObjects, 0);
-        heapObjects.forEach(i -> System.out.print(i.sum + " "));*/
-
+        System.out.println();
+        new NMaxPairCombinations().solveUsingPriorityQueue(A, B).forEach(i -> System.out.print(i + " "));
     }
 
     private ArrayList<Integer> solveBruteForce(ArrayList<Integer> A, ArrayList<Integer> B) {
@@ -43,6 +33,33 @@ public class NMaxPairCombinations {
         }
 
         return temp;
+    }
+
+    public ArrayList<Integer> solveUsingPriorityQueue(ArrayList<Integer> A, ArrayList<Integer> B) {
+        A.sort(Collections.reverseOrder());
+        B.sort(Collections.reverseOrder());
+        int n = A.size();
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int i : A) {
+            for (int j : B) {
+                int s = i + j;
+                if (pq.size() < n) {
+                    pq.add(s);
+                } else {
+                    if (s > pq.peek()) {
+                        pq.poll();
+                        pq.add(s);
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+
+        ArrayList<Integer> ret = new ArrayList<>(pq);
+        ret.sort(Collections.reverseOrder());
+        return ret;
     }
 
     public ArrayList<Integer> solve(ArrayList<Integer> A, ArrayList<Integer> B) {
