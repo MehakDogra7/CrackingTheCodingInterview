@@ -49,7 +49,5 @@ public class TwoSumBinaryTree {
         if (prev != null) prev.right = A;
         prev = A;
         convertToDoublyLinkedList(A.right);
-
-        return;
     }
 }
