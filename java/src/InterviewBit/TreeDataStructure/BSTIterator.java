@@ -2,11 +2,12 @@ package InterviewBit.TreeDataStructure;
 
 import java.util.Stack;
 
-public class Solution {
+public class BSTIterator {
 
     Stack<TreeNode> stack = new Stack<>();
 
-    public Solution(TreeNode root) {
+    public BSTIterator(TreeNode root) {
+        stack.clear();
         TreeNode node = root;
         while (node != null) {
             stack.push(node);
@@ -26,7 +27,7 @@ public class Solution {
         c.left = d;
         c.right = e;
 
-        Solution i = new Solution(a);
+        BSTIterator i = new BSTIterator(a);
         while (i.hasNext())
             System.out.print(i.next());
     }
