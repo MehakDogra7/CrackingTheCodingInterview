@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 /**
- * Pop current and and its value to result
- * push right
- * push left
+ * push current
+ * move to left
+ * if left is null pop and add its value
+ * move to right of pop
+ * if right is null pop another and add its value
  */
-public class PreOrderTraversal {
+public class InOrderTraversal {
 
     public static void main(String[] args) {
 
@@ -27,21 +29,27 @@ public class PreOrderTraversal {
         c.left = f;
         c.right = g;
 
-        new PreOrderTraversal().solve(a).forEach(i -> System.out.print(i + " "));
+        new InOrderTraversal().solve(a).forEach(i -> System.out.print(i + " "));
     }
 
     private ArrayList<Integer> solve(TreeNode A) {
         ArrayList<Integer> result = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        stack.add(A);
-
-        while (!stack.isEmpty()) {
-            TreeNode pop = stack.pop();
-            result.add(pop.val);
-            if (pop.right != null) stack.push(pop.right);
-            if (pop.left != null) stack.push(pop.left);
+        TreeNode root = A;
+        stack.push(root);
+        root = root.left;
+        while (!stack.isEmpty() || root != null) {
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                TreeNode pop = stack.pop();
+                result.add(pop.val);
+                root = pop.right;
+            }
         }
-
         return result;
     }
+
+
 }
