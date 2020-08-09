@@ -35,7 +35,7 @@ public class CousinsInBinaryTree {
         int requiredLevel = Integer.MIN_VALUE;
         int i = 1;
 
-        while (curr.node != null) {
+        while (true) {
             int level = curr.level;
             if (curr.node.val == B) {
                 requiredLevel = level;
