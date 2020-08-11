@@ -11,7 +11,6 @@ public class SymmetricBinaryTree {
         TreeNode f = new TreeNode(4);
         TreeNode g = new TreeNode(3);
 
-
         a.left = b;
         a.right = c;
         b.left = d;
