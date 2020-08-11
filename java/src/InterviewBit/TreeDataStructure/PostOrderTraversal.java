@@ -33,7 +33,7 @@ public class PostOrderTraversal {
         new PostOrderTraversal().solve(a).forEach(i -> System.out.print(i + " "));
     }
 
-    private ArrayList<Integer> solve(TreeNode A) {
+    public ArrayList<Integer> solve(TreeNode A) {
         ArrayList<Integer> result = new ArrayList<>();
         TreeNode lastPoppedNode = null;
         Stack<TreeNode> stack = new Stack<>();
