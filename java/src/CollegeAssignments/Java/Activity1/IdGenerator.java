@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class IdGenerator {
 
-    public static int ID_COUNTER = 1;
-    public int currYear = 0;
+    private static int ID_COUNTER = 1;
+    private int currYear = 0;
 
     public IdGenerator(final int currYear) {
         this.currYear = currYear;
     }
 
-    public String getNextId(LocalDate date) {
+    public String getNextId(final LocalDate date) {
         if (date.getYear() != currYear) ID_COUNTER = 1;
         currYear = date.getYear();
 
