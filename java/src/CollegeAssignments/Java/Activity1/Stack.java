@@ -2,7 +2,6 @@ package CollegeAssignments.Java.Activity1;
 
 public class Stack {
 
-    private String topOfStack = "";
     private LinkedList list;
 
     public void push(String stringToAdd) {
@@ -44,8 +43,8 @@ class LinkedList {
         return root == null;
     }
 
-    public class ListNode {
-        private String val;
+    public static class ListNode {
+        private final String val;
         private ListNode next;
 
         public ListNode(String val, ListNode next) {

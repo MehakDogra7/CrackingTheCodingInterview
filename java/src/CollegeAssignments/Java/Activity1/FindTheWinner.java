@@ -7,9 +7,9 @@ import java.util.TreeMap;
 
 public class FindTheWinner {
 
-    private int numberOfTeams;
-    private Map<String, Integer> teamsWithRank;
-    private Map<Integer, ArrayList<String>> results = new TreeMap<>();
+    private final int numberOfTeams;
+    private final Map<String, Integer> teamsWithRank;
+    private final Map<Integer, ArrayList<String>> results = new TreeMap<>();
 
     public FindTheWinner(final int numberOfTeams,
                          final Map<String, Integer> teamsWithRank) {
