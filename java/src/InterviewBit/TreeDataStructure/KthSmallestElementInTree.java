@@ -23,6 +23,7 @@ public class KthSmallestElementInTree {
         return inOrder.get(B - 1);
     }
 
+    //TODO: Do it in O(1)
     private void inOrderTraversal(TreeNode a) {
 
         if (a == null) return;
