@@ -5,13 +5,11 @@ import java.util.*;
 public class LRUCache {
 
     Map<Integer, Integer> map;
-    ArrayList<Integer> result;
     Queue<Integer> queue;
     int capacity;
 
     public LRUCache(int capacity) {
         this.map = new HashMap<>();
-        this.result = new ArrayList<>();
         this.queue = new ArrayDeque<>();
         this.capacity = capacity;
     }
