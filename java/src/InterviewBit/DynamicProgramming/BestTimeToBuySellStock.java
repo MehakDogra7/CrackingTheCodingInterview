@@ -9,7 +9,7 @@ public class BestTimeToBuySellStock {
     }
 
     private int solve(int[] A, int B) {
-        
+        B = Integer.min(A.length + 1, B);
         int[][] dp = new int[B + 1][A.length + 1];
 
         for (int i = 1; i < B + 1; i++) {
