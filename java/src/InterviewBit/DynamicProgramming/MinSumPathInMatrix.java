@@ -24,12 +24,10 @@ public class MinSumPathInMatrix {
     private int solve(int[][] A, int i, int j) {
         if (i == A.length - 1 && j == A[0].length - 1) return A[i][j];
 
-        if (i == A.length - 1) return A[i][j] + solve(A, i, j + 1);
-        if (j == A[0].length - 1) return A[i][j] + solve(A, i + 1, j);
-
-        if (dp[i][j] != Integer.MAX_VALUE) return dp[i][j];
-
-        dp[i][j] = A[i][j] + Integer.min(solve(A, i, j + 1), solve(A, i + 1, j));
+        if (i == A.length - 1) dp[i][j] = A[i][j] + solve(A, i, j + 1);
+        else if (j == A[0].length - 1) dp[i][j] = A[i][j] + solve(A, i + 1, j);
+        else if (dp[i][j] != Integer.MAX_VALUE) dp[i][j] = dp[i][j];
+        else dp[i][j] = A[i][j] + Integer.min(solve(A, i, j + 1), solve(A, i + 1, j));
 
         return dp[i][j];
     }
