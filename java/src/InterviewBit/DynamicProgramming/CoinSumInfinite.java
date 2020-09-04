@@ -1,7 +1,7 @@
 package InterviewBit.DynamicProgramming;
 
 /**
- * Print number of ways in O(n) space
+ * Print number of ways in O(n) space / Use DP
  */
 public class CoinSumInfinite {
 
