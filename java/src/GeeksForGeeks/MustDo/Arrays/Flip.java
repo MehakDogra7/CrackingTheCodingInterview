@@ -1,4 +1,4 @@
-package GeeksForGeeks.Arrays;
+package GeeksForGeeks.MustDo.Arrays;
 
 import java.util.ArrayList;
 import java.util.List;
