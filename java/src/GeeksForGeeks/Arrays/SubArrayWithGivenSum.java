@@ -1,4 +1,4 @@
-package MustDo.Arrays;
+package GeeksForGeeks.Arrays;
 
 import java.util.HashMap;
 
