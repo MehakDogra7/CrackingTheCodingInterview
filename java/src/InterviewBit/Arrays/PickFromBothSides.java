@@ -2,8 +2,6 @@ package InterviewBit.Arrays;
 
 public class PickFromBothSides {
 
-    int[][] dp;
-
     public static void main(String[] args) {
         int[] A = {5, -2, 3, 1, 2};
         System.out.println(new PickFromBothSides().solve(A, 3));
