@@ -1,4 +1,4 @@
-package InterviewBit;
+package InterviewBit.StacksAndQueues;
 
 import java.util.ArrayList;
 
