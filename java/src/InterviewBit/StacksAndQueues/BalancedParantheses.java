@@ -19,7 +19,6 @@ public class BalancedParantheses {
                 if (stack.isEmpty()) return 0;
                 stack.pop();
             }
-
         }
 
         return stack.isEmpty() ? 1 : 0;
