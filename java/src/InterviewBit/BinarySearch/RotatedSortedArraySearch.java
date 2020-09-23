@@ -13,6 +13,51 @@ public class RotatedSortedArraySearch {
         }
     }
 
+    public int searchDupes(int[] A, int target) {
+        int low = 0;
+        int high = A.length - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (A[mid] == target) return mid;
+
+            else if ((A[low] == A[mid]) && (A[high] == A[mid])) {
+                low++;
+                high--;
+            } else if (A[low] <= A[mid]) {
+                if (target >= A[low] && target <= A[mid])
+                    high = mid - 1;
+                else
+                    low = mid + 1;
+            } else if (target >= A[mid] && target <= A[high])
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+
+        return -1;
+    }
+
+    public int findMinDupes(int[] A) {
+        int min = Integer.MAX_VALUE;
+        int low = 0, high = A.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (A[low] == A[mid] && A[mid] == A[high]) {
+                min = Integer.min(min, A[low]);
+                low++;
+                high--;
+            } else if (A[low] <= A[mid]) {
+                min = Integer.min(min, A[low]);
+                low = mid + 1;
+            } else if (A[mid] <= A[high]) {
+                min = Integer.min(min, A[mid]);
+                high = mid - 1;
+            }
+        }
+        return min;
+    }
+
     public int search(final int[] A, int B) {
         int low = 0;
         int high = A.length - 1;
