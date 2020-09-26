@@ -21,7 +21,7 @@ public class MergeSort {
     }
 
     /**
-     * Time Complexity:
+     * Time Complexity:  O(nlogn)
      * Space Complexity: O(n) for queue and O(n) for merge function -- Overall -> O(n)
      *
      * @param A -- Input array.
@@ -71,7 +71,9 @@ public class MergeSort {
         //10 0       ----- Current is 10 and next is 0, so 10 indicate that this is last block -- simply enqueue it at the end. (no operation)
         //0 10       ----- dequeue 0 and 10 - merge them and enqueue 0 at the end
         //0          ----- Size is 1 hence we reached at the end of algo which indicates all the blocks are sorted.
-
+        //Since after every iteration we are merging 2 blocks and after reaching at the end we again start merging the result of previous
+        //iterations - we are simply reducing the size by n/2 after successful merge of n elements (2-2 blocks)
+        //so it will lead to O(nlogn) time complexity.
         while (queue.size() > 1) {
             int startFirst = queue.poll();
             if (queue.peek() == 0) {
