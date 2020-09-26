@@ -28,7 +28,7 @@ public class MergeSort {
      * @return A -- Sorted array.
      */
     private int[] sort(int[] A) {
-        boolean isCurrIterationInc = true;
+        boolean isCurrIterationInc = true;                 //Flag to keep track whether the current iteration is increasing or decreasing
         Queue<Integer> queue = new ArrayDeque<>();         //Will contain the starting index of each consecutive block
 
         for (int i = 0; i < A.length; ) {
@@ -48,7 +48,7 @@ public class MergeSort {
                     j++;
                 }
                 //Now we have identified the starting and ending index of decreasing subArray --so, reverse it.
-                reverse(A, i, j);           //Both Included
+                reverse(A, i, j);           //Both Included except in case when j = A.length
             }
             i = j + 1;
             //Toggle the flag --i.e. if current iteration is for the search of increasing sequence
@@ -57,21 +57,21 @@ public class MergeSort {
         }
 
         //Queue contains the starting index of all blocks.
-        //Take 2 elements at a time -- )means dequeue from beg.) -- merge them by calling merge function and
+        //Take 2 elements at a time -- (means dequeue from beg.) -- merge them by calling merge function and
         //Append (enqueue) the first index again at the end.
         //Do this till we reach the end of algo meaning queue contain only 1 element.
         //Note: If we reach the last block then this means we cannot merge this block with any other block
         //      then simply dequeue and enqueue it.     (This can be check if the next element in the queue is 0
         //      then it means that current index indicate the starting position of last block.
-        //For eq:
+        //For example:
         //0 3 5 6 10 ----- dequeue 0 and 3 - merge them and enqueue 0 at the end
         //5 6 10 0   ----- dequeue 5 and 6 - merge them and enqueue 5 at the end
-        //10 0 5     ----- Current is 10 and next is 0, so 10 indicate that this is last block -- simply enqueue it at the end. (no operation)
+        //10 0 5     ----- Current is 10 and next is 0, so 10 indicate that this is last block -- simply dequeue & enqueue it at the end. (no operation)
         //0 5 10     ----- dequeue 0 and 5 - merge them and enqueue 0 at the end
-        //10 0       ----- Current is 10 and next is 0, so 10 indicate that this is last block -- simply enqueue it at the end. (no operation)
+        //10 0       ----- Current is 10 and next is 0, so 10 indicate that this is last block -- simply dequeue & enqueue it at the end. (no operation)
         //0 10       ----- dequeue 0 and 10 - merge them and enqueue 0 at the end
         //0          ----- Size is 1 hence we reached at the end of algo which indicates all the blocks are sorted.
-        //Since after every iteration we are merging 2 blocks and after reaching at the end we again start merging the result of previous
+        //Since in every iteration we are merging 2 blocks and after reaching at the end we again start merging the result of previous
         //iterations - we are simply reducing the size by n/2 after successful merge of n elements (2-2 blocks)
         //so it will lead to O(nlogn) time complexity.
         while (queue.size() > 1) {
@@ -101,6 +101,7 @@ public class MergeSort {
         if (end == A.length) end = A.length - 1;
         if (start == end) return;
 
+        //Reverse the array between start and end -- both inclusive.
         while (start < end) {
             int temp = A[start];
             A[start] = A[end];
@@ -112,7 +113,7 @@ public class MergeSort {
 
     /**
      * Time Complexity: O(n)
-     * Space Complexity: O(1)
+     * Space Complexity: O(n)
      *
      * @param A
      * @param startFirst  -- starting index of 1st block.
