@@ -1,14 +1,11 @@
 package InterviewBit.DynamicProgramming;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WordBreak2 {
 
     Set<String> dict;
-    ArrayList<String> res;
+    Map<Integer, ArrayList<String>> dp;
 
     public static void main(String[] args) {
         String A = "catsanddog";
@@ -19,23 +16,40 @@ public class WordBreak2 {
 
     public ArrayList<String> wordBreak(String A, ArrayList<String> B) {
         dict = new HashSet<>(B);
-        res = new ArrayList<>();
+        dp = new HashMap<>();
 
-        topDown(A, 0, "");
-        return res;
+        ArrayList<String> result = topDown(A, 0);
+        result.sort(String::compareTo);
+        return result;
     }
 
-    private void topDown(String A, int index, String temp) {
+    private ArrayList<String> topDown(String A, int index) {
         if (index == A.length()) {
-            res.add(temp.trim());
-            return;
+            String temp = "";
+            ArrayList<String> list = new ArrayList<>();
+            list.add(temp);
+            return list;
         }
 
-        for (int i = 1; i + index <= A.length(); i++) {
-            String last = A.substring(index, index + i);
-            if (dict.contains(last)) {
-                topDown(A, index + i, temp + " " + last);
+        if (dp.containsKey(index)) return dp.get(index);
+
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = index + 1; i <= A.length(); i++) {
+            String current = A.substring(index, i);
+            if (dict.contains(current)) {
+                combine(topDown(A, i), current, list);
             }
+        }
+        dp.put(index, list);
+        return list;
+    }
+
+    private void combine(ArrayList<String> list, String word, ArrayList<String> listToAdd) {
+        if (list.isEmpty()) return;
+
+        for (String s : list) {
+            if (!s.isEmpty()) listToAdd.add(word + " " + s);
+            else listToAdd.add(word);
         }
     }
 

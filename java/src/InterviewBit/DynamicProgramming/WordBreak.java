@@ -2,7 +2,6 @@ package InterviewBit.DynamicProgramming;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class WordBreak {
@@ -44,10 +43,11 @@ public class WordBreak {
         boolean[] dp = new boolean[A.length() + 1];
         dp[0] = true;
         for (int i = 1; i <= A.length(); i++) {
-            String temp = A.substring(0, i);
-            for (String curr : B) {
-                if (temp.endsWith(curr)) {
-                    dp[i] = dp[i] || dp[i - curr.length()];
+            String currentLast = A.substring(0, i);
+            for (String s : B) {
+                if (currentLast.endsWith(s)) {
+                    dp[i] = dp[i - s.length()];
+                    if (dp[i]) break;
                 }
             }
         }
