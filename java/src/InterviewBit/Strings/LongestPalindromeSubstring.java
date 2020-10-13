@@ -5,8 +5,34 @@ public class LongestPalindromeSubstring {
     public static void main(String[] args) {
 
         System.out.println(getPalindromeSubstring("aaabaaa"));
+        System.out.println(getPalindromeSubstringConstantSpace("aaabaaa"));
         System.out.println(longestPalindromicSubstringLinear("aaabaaa"));
 
+    }
+
+    private static String getPalindromeSubstringConstantSpace(String A) {
+        if (A.length() < 2) return A;
+
+        int start = 0, end = 0;
+        for (int i = 0; i < A.length(); i++) {
+            int l1 = expand(A, i, i);
+            int l2 = expand(A, i, i + 1);
+            int max = Math.max(l1, l2);
+            if (max > end - start + 1) {
+                start = i - ((max - 1) / 2);
+                end = i + (max / 2);
+            }
+        }
+
+        return A.substring(start, end + 1);
+    }
+
+    private static int expand(String A, int left, int right) {
+        while (left > -1 && right < A.length() && A.charAt(left) == A.charAt(right)) {
+            left--;
+            right++;
+        }
+        return right - left - 1;
     }
 
     private static String getPalindromeSubstring(String A) {
