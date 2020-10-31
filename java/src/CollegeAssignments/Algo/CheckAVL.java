@@ -2,41 +2,52 @@ package CollegeAssignments.Algo;
 
 public class CheckAVL {
 
-    int max = Integer.MIN_VALUE;
-    Node result = null;
+    static int max = Integer.MIN_VALUE;
+    static Node result = null;
 
     public static void main(String[] args) {
         Node a = new Node(1);
     }
 
-    int checkBBST(Node currNode) {
-        if (currNode == null) return 0;
+    public static int[] checkBBST(Node currNode) {
+        int[] res = new int[2];                     //1st Element will contain the totalNumber of nodes in currSubTree
+                                                    //and 2nd Element will contain the height of currNode
+        if (currNode == null) {
+            res[0] = res[1] = 0;
+            return res;
+        }
 
-        int left = checkBBST(currNode.left);
-        int right = checkBBST(currNode.right);
+        int[] left = checkBBST(currNode.left);
+        int[] right = checkBBST(currNode.right);
 
-        if (left == Integer.MAX_VALUE || right == Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        int heightOfLeftSubtree = left[1], heightOfRightSubtree = right[1];
+        int nodesInLeftSubtree = left[0], nodeInRightSubtree = right[0];
 
-        int balance = height(currNode.left) - height(currNode.right);
+        if (nodesInLeftSubtree == Integer.MAX_VALUE || nodeInRightSubtree == Integer.MAX_VALUE) {
+            res[0] = Integer.MAX_VALUE;
+            res[1] = Integer.MAX_VALUE;
+            return res;
+        }
+
+        int balance = heightOfLeftSubtree - heightOfRightSubtree;
 
         if (balance >= -1 && balance <= 1) {
-            int curr = left + right + 1;
+            int curr = nodesInLeftSubtree + nodeInRightSubtree + 1;
             if (curr > max) {
                 max = curr;
                 result = currNode;
             }
-            return curr;
+            res[0] = curr;
+            res[1] = 1 + Math.max(heightOfLeftSubtree, heightOfRightSubtree);
+            return res;
         }
-        return Integer.MAX_VALUE;
-    }
-
-    private static int height(Node node) {
-        if (node == null) return 0;
-        return node.height;
+        res[0] = Integer.MAX_VALUE;
+        res[1] = Integer.MAX_VALUE;
+        return res;
     }
 
     static class Node {
-        int key, height;
+        int key;
         Node left, right;
 
         public Node(int key) {
