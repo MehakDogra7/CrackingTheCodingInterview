@@ -32,7 +32,7 @@ public class LongestPalindromeSubstring {
             left--;
             right++;
         }
-        return right - left - 1;
+        return right - left - 1;    //-1 because above condition will break with not equal to condition hence remove 1 char from both left and right side.
     }
 
     private static String getPalindromeSubstring(String A) {
