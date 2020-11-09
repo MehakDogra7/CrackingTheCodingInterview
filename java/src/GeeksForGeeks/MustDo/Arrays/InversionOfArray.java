@@ -2,6 +2,10 @@ package GeeksForGeeks.MustDo.Arrays;
 
 import java.util.Scanner;
 
+/**
+ * Similar to minimum swaps with condition of only adjacent swaps allowed
+ */
+
 public class InversionOfArray {
     static long count = 0;
 
