@@ -8,6 +8,11 @@ public class Sort012 {
         for (int i : A) {
             System.out.print(i + " ");
         }
+        int[] B = {0, 2, 1, 2, 0};
+        sort012Optimized(B, B.length);
+        for (int i : B) {
+            System.out.print(i + " ");
+        }
     }
 
 
@@ -33,5 +38,21 @@ public class Sort012 {
             a[i++] = 2;
             two--;
         }
+    }
+
+    public static void sort012Optimized(int a[], int n) {
+        int low = 0, high = n - 1, mid = 0;
+
+        while (mid < high) {
+            if (a[mid] == 0) swap(a, low++, mid++);
+            else if (a[mid] == 2) swap(a, high--, mid);
+            else mid++;
+        }
+    }
+
+    private static void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 }
