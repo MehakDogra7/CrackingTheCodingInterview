@@ -23,6 +23,11 @@ public class ChocolateDistributionProblem {
 
     private static int solve(int[] A, int n, int m) {
 
+        // Number of students cannot be
+        // more than number of packets
+        if (n < m)
+            return -1;
+
         Arrays.sort(A);
         int minDiff = Integer.MAX_VALUE;
         for (int i = 0; i <= n - m; i++) {
