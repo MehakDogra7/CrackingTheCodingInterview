@@ -1,4 +1,4 @@
-package Question450.Array;
+package Question450.DynamicProgramming;
 
 public class BuySellAtmost2Times {
 

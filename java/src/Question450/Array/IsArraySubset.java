@@ -1,7 +1,9 @@
 package Question450.Array;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class IsArraySubset {
 
@@ -20,6 +22,7 @@ public class IsArraySubset {
             for (int i = 0; i < n; i++) B[i] = sc.nextInt();
 
             System.out.println(new IsArraySubset().solve(A, B, m, n));
+            System.out.println(new IsArraySubset().solveOptimal(A, B, m, n));
             t--;
         }
     }
@@ -39,5 +42,16 @@ public class IsArraySubset {
         }
         if (j == n) return "Yes";
         return "No";
+    }
+
+    private String solveOptimal(int[] A, int[] B, int m, int n) {
+        Set<Integer> set = new HashSet<>();
+
+        for (int i : A) set.add(i);
+
+        for (int i : B) {
+            if (!set.contains(i)) return "No";
+        }
+        return "Yes";
     }
 }
