@@ -30,8 +30,8 @@ public class BeautifulSequence {
 
             int curr = A[i];
             int index = binarySearch(dp, curr);
-            if (index == dp.size() - 1) dp.add(0);
-            dp.set(index + 1, curr);
+            if (index == dp.size() - 1) dp.add(curr);
+            else dp.set(index + 1, curr);
         }
         return dp.size() - 1;
     }
