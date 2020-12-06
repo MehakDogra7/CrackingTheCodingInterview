@@ -8,9 +8,15 @@ public class MostCompetitiveSubsequence {
         int[] nums = {3, 5, 2, 6};
         int k = 2;
         int[] result = new MostCompetitiveSubsequence().mostCompetitive(nums, k);
+        System.out.print("Most Competitive Subsequence for: ");
+        for (int input : nums) {
+            System.out.print(input + " ");
+        }
+        System.out.print("\nIs: ");
         for (int value : result) {
             System.out.print(value + " ");
         }
+        System.out.println();
     }
 
     /**
