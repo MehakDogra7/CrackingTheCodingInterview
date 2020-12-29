@@ -13,19 +13,20 @@ public class BeautifulSequence {
             int N = in.nextInt();
             int[] a = new int[N];
             for (int i = 0; i < N; i++) {
-                a[i] = in.nextInt() - i;
+                a[i] = in.nextInt();
             }
-            System.out.println(N - longestIncreasingSubsequence(a));
+            System.out.println(beautifulSequence(a));
         }
 
     }
 
-    private static int longestIncreasingSubsequence(int[] A) {
+    private static int beautifulSequence(int[] A) {
         ArrayList<Integer> dp = new ArrayList<>();
         int n = A.length;
         dp.add(0);
 
         for (int i = 0; i < n; i++) {
+            A[i] = A[i] - i;
             if (A[i] <= 0) continue;
 
             int curr = A[i];
@@ -33,7 +34,7 @@ public class BeautifulSequence {
             if (index == dp.size() - 1) dp.add(curr);
             else dp.set(index + 1, curr);
         }
-        return dp.size() - 1;
+        return A.length - (dp.size() - 1);
     }
 
     private static int binarySearch(ArrayList<Integer> dp, int curr) {
