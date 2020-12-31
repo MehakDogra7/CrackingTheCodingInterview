@@ -62,7 +62,6 @@ public class WoodCuttingMadeEasy {
         long sum = 0;
         long H = lowH - 1;
         long minH = Integer.MAX_VALUE;
-        long oldSum = Integer.MAX_VALUE;
         while (lowH <= highH) {
             H = lowH + (highH - lowH) / 2;
             sum = 0;
@@ -73,10 +72,7 @@ public class WoodCuttingMadeEasy {
                 }
             }
             if (sum >= B) {
-                if (oldSum > sum) {
-                    minH = H;
-                    oldSum = sum;
-                }
+                minH = H;
                 lowH = H + 1;
             } else {
                 highH = H - 1;
