@@ -23,7 +23,6 @@ public class RotiPrataSPOJ {
 
         Arrays.sort(A);
 
-        int min = A[0];
         int low = 1, high = 10 * p * (p + 1) / 2;
         while (low < high) {
             int mid = (low + high) / 2;
