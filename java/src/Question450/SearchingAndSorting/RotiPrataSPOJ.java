@@ -23,18 +23,20 @@ public class RotiPrataSPOJ {
 
         Arrays.sort(A);
 
-        int low = 1, high = 10 * p * (p + 1) / 2;
-        while (low < high) {
-            int mid = (low + high) / 2;
+        int low = 1, high = ((p) * ((2 * A[n - 1]) + ((p - 1) * A[n - 1]))) / 2;
+        int result = -1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
 
             if (isPossible(A, p, mid)) {
-                high = mid;
+                result = mid;
+                high = mid - 1;
             } else {
                 low = mid + 1;
             }
         }
 
-        return low;
+        return result;
     }
 
     /**
