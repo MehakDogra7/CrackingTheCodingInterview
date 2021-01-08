@@ -72,6 +72,9 @@ class Node {
     int data;
     Node next;
 
+    public Node() {
+    }
+
     Node(int key) {
         data = key;
         next = null;
