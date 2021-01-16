@@ -30,6 +30,8 @@ public class InOrderTraversal {
         c.right = g;
 
         new InOrderTraversal().solve(a).forEach(i -> System.out.print(i + " "));
+        System.out.println();
+        new InOrderTraversal().inorderTraversalUsingMorrisTraversal(a).forEach(i -> System.out.print(i + " "));
     }
 
     public ArrayList<Integer> solve(TreeNode A) {
@@ -49,6 +51,41 @@ public class InOrderTraversal {
             }
         }
         return result;
+    }
+
+    /**
+     * TC: O(n)
+     * SC: O(1)
+     *
+     * @param A
+     * @return
+     */
+    public ArrayList<Integer> inorderTraversalUsingMorrisTraversal(TreeNode A) {
+        if (A == null) return new ArrayList<>();
+
+        ArrayList<Integer> res = new ArrayList<>();
+        TreeNode current = A, prev;
+        while (current != null) {
+            if (current.left == null) {
+                res.add(current.val);
+                current = current.right;
+            } else {
+                prev = current.left;
+                while (prev.right != null && prev.right != current) {
+                    prev = prev.right;
+                }
+
+                if (prev.right == null) {
+                    prev.right = current;
+                    current = current.left;
+                } else {
+                    prev.right = null;
+                    res.add(current.val);
+                    current = current.right;
+                }
+            }
+        }
+        return res;
     }
 
 
