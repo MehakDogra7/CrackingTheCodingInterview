@@ -24,6 +24,7 @@ public class FlattenBinaryTreeToLinkedList {
         new InOrderTraversal().solve(node).forEach(i -> System.out.print(i + " "));
     }
 
+    //TODO  Constant space
     private TreeNode solve(TreeNode A) {
         Stack<TreeNode> stack = new Stack<>();
         stack.push(A);
